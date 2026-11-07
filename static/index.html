@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>GitZip Bot — zip to GitHub, with AI</title>
+<meta name="description" content="Server-side zip to GitHub uploader with an AI assistant. Uploads keep running when you close the tab." />
+<meta name="theme-color" content="#eef2f3" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#0a1115" media="(prefers-color-scheme: dark)" />
+<link rel="manifest" href="manifest.webmanifest" />
+<link rel="icon" href="icon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header class="topbar">
+  <button class="icon-btn" id="backBtn" style="display:none" title="Back" aria-label="Back"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+  <h1 id="title">GitZip Bot</h1>
+  <span class="badge" id="netBadge">online</span>
+  <button class="icon-btn" id="settingsBtn" title="Settings" aria-label="Settings"><svg viewBox="0 0 24 24"><path d="M4 7h9M17 7h3M4 17h3M11 17h9M15 5a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM9 15a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/></svg></button>
+</header>
+
+<main class="wrap" id="view"></main>
+
+<nav class="tabs off" id="tabs" aria-label="Main">
+  <button data-tab="home"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 10v10h14V10M10 20v-6h4v6"/></svg>Home</button>
+  <button data-tab="ai"><svg viewBox="0 0 24 24"><path d="M12 3l1.8 4.6L18.5 9l-4.7 1.4L12 15l-1.8-4.6L5.5 9l4.7-1.4zM18 15l.8 2.2L21 18l-2.2.8L18 21l-.8-2.2L15 18l2.2-.8z"/></svg>AI</button>
+  <button data-tab="jobs"><svg viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M4 20h16"/></svg>Jobs</button>
+  <button data-tab="repos"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5zM20 17v4H6.5A2.5 2.5 0 0 1 4 18.5"/></svg>Repos</button>
+</nav>
+
+<div class="sheet" id="sheet"><div class="sheet-inner" id="sheetInner"></div></div>
+<div class="toast" id="toast"></div>
+
+<input type="file" id="pickZip" accept=".zip,application/zip,application/x-zip-compressed" multiple style="display:none" />
+<input type="file" id="pickFiles" multiple style="display:none" />
+<input type="file" id="pickDir" webkitdirectory style="display:none" />
+<script src="app.js"></script>
+</body>
+</html>
