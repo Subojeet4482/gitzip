@@ -1,0 +1,17 @@
+# Render Blueprint: Dashboard -> New -> Blueprint -> select this repo.
+services:
+  - type: web
+    name: gitzip-bot
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python server.py
+    healthCheckPath: /healthz
+    autoDeploy: true
+    envVars:
+      - key: APP_PASSWORD        # login password (Render generates a random one; see Environment tab)
+        generateValue: true
+      - key: PYTHONUNBUFFERED
+        value: "1"
+      # Optional but recommended on the free plan (survives restarts) — add them in the Environment tab:
+      #   GITHUB_TOKEN, INCEPTION_API_KEY
